@@ -1,0 +1,9 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: UNL_test_base
+  host : localhost
+  pool: 5
+  username: unl_user
+  password: q123654
+

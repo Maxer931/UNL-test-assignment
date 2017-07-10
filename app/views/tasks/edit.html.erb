@@ -1,0 +1,12 @@
+<h1>Update task</h1>
+
+<%= simple_form_for(@task) do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :status, collection: $status, selected: @task.status%>
+    <%= f.association :users, :collection => @user,  :label_method => lambda { |user| "#{user.first_name}  #{user.last_name}" }, value_method: :id, as: :radio_buttons, checked: @task.user_ids %>
+    <%= f.submit 'Update task' %>
+<% end %>
+
+
+

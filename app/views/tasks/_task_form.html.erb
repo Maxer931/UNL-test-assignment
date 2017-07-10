@@ -1,0 +1,46 @@
+<h1>Project tasks</h1>
+<%= link_to "Create new task", new_task_path %>
+
+
+<table class="table">                              <!-- creation of table with all project's tasks-->
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Status</th>
+    <th>User</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <% @task.zip(@user).each  do |task, user|%>
+      <tr>
+        <td>
+          <%= task.title %>
+        </td>
+        <td>
+          <%= task.description %>
+        </td>
+        <td>
+          <%= task.status %>
+        </td>
+        <td>
+          <%= user.first_name + " " + user.last_name %>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>
+          <%= link_to 'Update task', edit_task_path(task)%>
+        </td>
+        <td>
+          <%= link_to 'Delete task', task_path(task), method: :delete, data: {confirm: 'Are you sure you want to delete task?'}%>
+        </td>
+      </tr>
+
+  <% end %>
+
+  </tbody>
+
+</table>

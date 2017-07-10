@@ -1,0 +1,12 @@
+<h1>Create new task</h1>
+
+<%= simple_form_for(@task) do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :status, collection: $status, selected: @task.status%>
+    <%= f.association :users, :collection => User.where('task_id' => 0), :label_method => lambda { |user| "#{user.first_name}  #{user.last_name}" }, value_method: :id, as: :radio_buttons, checked: @checked_user.id  %>
+    <%= f.submit 'Create task' %>
+<% end %>
+
+
+

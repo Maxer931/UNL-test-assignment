@@ -1,0 +1,48 @@
+<h1>Projects</h1>
+<li><%= link_to "Create new project", new_project_path %></li>
+<table class="table">
+  <thead>
+   <tr>                                                     <!-- creation of table with all projects-->
+     <th>Project name</th>
+     <th> Summary</th>
+     <th> Start date</th>
+     <th> End date</th>
+   </tr>
+  </thead>
+  <tbody>
+  <% @projects.each do |project| %>
+  <tr>
+    <td>
+      <%= project.name %>
+    </td>
+    <td>
+      <%= project.summary %>
+    </td>
+    <td>
+      <%= project.start_date %>
+    </td>
+    <td>
+      <%= project.end_date %>
+    </td>
+    <td>
+
+    </td>
+  </tr>
+  <tr align="right">
+    <td>
+    </td>
+    <td>
+      <%= link_to 'Project tasks', task_path(project)%>
+    </td>
+    <td >
+      <%= link_to 'Update project', edit_project_path(project)%>
+    </td>
+    <td>
+      <%= link_to 'Delete project', project_path(project), method: :delete, data: {confirm: 'Are you sure you want to delete project?'}%>
+    </td>
+  </tr>
+  <% end %>
+
+  </tbody>
+
+</table>
